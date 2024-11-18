@@ -1,0 +1,12 @@
+on:
+  issues:
+jobs:
+  github_issues_events:
+    name: Any event
+    if: ${{ github.event.issue }}
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo An event on $INFO
+        env:
+          INFO: ${{ toJSON(github.event.issue) }}
